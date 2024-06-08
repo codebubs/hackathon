@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@font-face {
+	font-family: 'Figtree';
+	src: url('./figtree.ttf');
+}
+body {
+	font-family: 'Figtree';
+}
