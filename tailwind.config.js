@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./public/**/*.html'],
+	content: ['./html/**/*.html', './public/js/**/*.js'],
 	theme: {
-		extend: {}
+		extend: {
+			colors: {
+				skyblue: '#87ceeb'
+			}
+		}
 	},
-	plugins: []
+	plugins: [require('@tailwindcss/forms')]
 };

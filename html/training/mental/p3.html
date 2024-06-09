@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Training | StegaNerds</title>
+		<link rel="stylesheet" href="/style.css" />
+		<style>
+			body {
+				opacity: 0;
+			}
+			@keyframes fade-in {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+		</style>
+		<script src="/js/usernamelist.js"></script>
+		<script src="/js/mp3.js" defer></script>
+	</head>
+	<body class="text-gray-100 text-xl">
+		<div class="w-screen h-screen" style="background-color: #333438">
+			<div
+				class="fixed top-0 left-0 w-screen h-16 flex items-center justify-end pr-4"
+				style="background-color: #1a1a1a"
+			>
+				<div class="flex gap-4 flex-row-reverse">
+					<a href="./2" class="rounded-full w-8 h-8 bg-red-400"></a>
+					<a class="rounded-full w-8 h-8 bg-yellow-400"></a>
+					<a class="rounded-full w-8 h-8 bg-green-400"></a>
+				</div>
+			</div>
+			<div
+				class="fixed bottom-0 left-0 w-1/5 rounded-r-lg shadow-xl p-7 flex flex-col gap-5"
+				style="background-color: #2a2b2f; height: calc(100vh - 4rem)"
+			>
+				<h1 class="2xl:text-2xl font-semibold">Messages</h1>
+				<div class="card light"><div></div></div>
+				<div class="card"><div></div></div>
+				<div class="card"><div></div></div>
+				<div class="card"><div></div></div>
+				<script>
+					const colors = [];
+					const usernames = [];
+					const cards = [...document.querySelectorAll('.card')];
+					for (card of cards) {
+						card.children[0].style.backgroundColor =
+							'rgb(' +
+							(Math.floor(Math.random() * 181) + 75) +
+							',' +
+							(Math.floor(Math.random() * 181) + 75) +
+							',' +
+							(Math.floor(Math.random() * 181) + 75) +
+							')';
+						colors.push(card.children[0].style.backgroundColor);
+						usernames.push(
+							'_'.repeat(Math.round(Math.random() * 0.7)) +
+								l[Math.floor(Math.random() * l.length)] +
+								(Math.floor(Math.random() * 10) + '').repeat(
+									Math.round(Math.random() * 2)
+								) +
+								(Math.floor(Math.random() * 10) + '').repeat(
+									Math.round(Math.random() * 0.9)
+								) +
+								(Math.floor(Math.random() * 10) + '').repeat(
+									Math.round(Math.random() * 0.7)
+								) +
+								'_'.repeat(Math.round(Math.random() * 0.8))
+						);
+						card.innerHTML += usernames[usernames.length - 1];
+					}
+				</script>
+			</div>
+			<div
+				class="fixed bottom-0 right-0 mr-8 flex flex-col gap-8"
+				style="width: calc(80vw - 4rem); margin-bottom: 7rem"
+			>
+				<div
+					class="chat flex flex-col gap-8 ml-8 text-2xl"
+					style="
+						line-height: 1.5;
+						height: calc(100vh - 15rem);
+						overflow-y: auto;
+					"
+				></div>
+			</div>
+			<div
+				class="fixed bottom-0 right-0 mr-8 mb-4 flex gap-8"
+				style="width: calc(80vw - 4rem)"
+			>
+				<button
+					class="block p-4 rounded-full w-1/2 text-center shadow-sm"
+					style="background-color: #434448"
+				>
+					Block
+				</button>
+				<button
+					class="dont p-4 rounded-full w-1/2 text-center shadow-sm"
+					style="background-color: #434448"
+				>
+					Don't block
+				</button>
+				<button
+					class="next p-4 rounded-full w-1/2 text-center shadow-sm"
+					style="background-color: #434448; display: none"
+				>
+					Next
+				</button>
+				<button
+					class="nextfull p-4 rounded-full w-full text-center shadow-sm"
+					style="background-color: #434448; display: none"
+				>
+					Next
+				</button>
+				<button
+					class="complete p-4 rounded-full w-1/2 text-center shadow-sm"
+					style="background-color: #434448; display: none"
+				>
+					Complete
+				</button>
+				<button
+					class="completefull p-4 rounded-full w-full text-center shadow-sm"
+					style="background-color: #434448; display: none"
+				>
+					Complete
+				</button>
+				<button
+					class="retry p-4 rounded-full w-1/2 text-center shadow-sm"
+					style="background-color: #434448; display: none"
+				>
+					Retry
+				</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.querySelector('body').style.animation = 'fade-in 1s forwards';
+	</script>
+</html>

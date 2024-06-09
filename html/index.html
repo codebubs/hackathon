@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Scam Protection | StegaNerds</title>
-		<link rel="stylesheet" href="/style.css" />
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body
 		class="py-5 text-gray-800 text-xl"
@@ -15,25 +15,44 @@
 			<h1
 				class="text-center text-5xl md:text-7xl font-extrabold max-w-4xl text-black"
 			>
-				Protect Yourself from Every Scam
+				Protect Yourself from
+				<span class="underline-accent"
+					>Dangerous<svg
+						class="underline-svg"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 100 10"
+					>
+						<path
+							class="underline-path"
+							d="M0 5 Q15 8 50 5 T100 5"
+							fill="none"
+							stroke="skyblue"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						></path>
+					</svg>
+				</span>
+				Scams
 			</h1>
 		</header>
 		<article
 			class="lg:text-2xl"
 			style="line-height: 1.5; font-weight: 500; margin-top: 4.5rem"
 		>
-			<section class="flex justify-center">
-				<p class="2xl:w-1/2">
+			<section class="flex justify-center text-center">
+				<p class="2xl:max-w-5xl">
 					Take our quick and interactive lesson about scams and scam protection.
 					In just less than <b>15 minutes</b>, you will be able to protect
 					yourself against phishing attempts, impersonation scams, and so much
-					more!
+					more! And, after you're done, you can claim your stegatificate as a
+					mark of
 				</p>
 			</section>
 			<section class="text-center mt-14">
 				<a
 					href="./training"
-					class="inline-block lg:px-15 lg:py-7.5 lg:text-3xl font-bold text-2xl text-white bg-gray-800 hover:bg-gray-900 hover:ring-2 focus:ring-4 ring-gray-300 rounded-lg px-10 py-5 me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 transition duration-200"
+					class="inline-block lg:px-15 lg:py-7.5 lg:text-3xl font-bold text-2xl text-white bg-gray-800 hover:bg-gray-900 hover:ring-2 focus:ring-4 ring-gray-300 rounded-lg px-10 py-5 me-2 transition duration-200"
 				>
 					Get Started
 				</a>
@@ -42,5 +61,6 @@
 		<div class="fixed bottom-0 left-0 right-0 flex items-end justify-center">
 			<div></div>
 		</div>
+		{{sections}}
 	</body>
 </html>

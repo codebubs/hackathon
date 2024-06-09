@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Training | StegaNerds</title>
+		<link rel="stylesheet" href="/style.css" />
+		<script src="/js/np3.js" defer></script>
+	</head>
+	<body
+		class="py-5 text-gray-800 text-xl"
+		style="padding-left: 15vw; padding-right: 15vw"
+	>
+		{{nav}}
+		<article
+			class="flex items-center flex-col"
+			style="margin-top: 10vh; line-height: 1.5"
+		>
+			<div style="min-width: 48rem">
+				<h1 class="text-4xl md:text-6xl font-extrabold text-black">Quiz!</h1>
+				<hr class="mt-8 bg-gray-200 w-full h-0.5 rounded-lg" />
+				<section class="text-2xl mt-10">
+					<p>What does NSFW stand for?</p>
+					<ul class="flex flex-col gap-7 mt-6">
+						<li>
+							<label>
+								<input type="radio" value="1" name="1" />
+								No So Fun Walk
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" value="2" name="1" />
+								Not Safe For Warnings
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" value="3" name="1" />
+								Not Safe For Work
+							</label>
+						</li>
+					</ul>
+				</section>
+				<section class="text-2xl mt-10">
+					<p>What might an unsafe NSFW website trick you into doing?</p>
+					<ul class="flex flex-col gap-7 mt-6">
+						<li>
+							<label>
+								<input type="radio" value="1" name="2" />
+								Giving it your personal info
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" value="2" name="2" />
+								Having fun
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" value="3" name="2" />
+								Playing a video game
+							</label>
+						</li>
+					</ul>
+				</section>
+				<section class="text-2xl mt-10">
+					<p>How can you identify unsafe NSFW websites?</p>
+					<ul class="flex flex-col gap-7 mt-6">
+						<li>
+							<label>
+								<input type="radio" value="1" name="3" />
+								It asks for money
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" value="2" name="3" />
+								It requests personal information
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" value="3" name="3" />
+								It displays NSFW content without a content warning
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" value="4" name="3" />
+								All of the above
+							</label>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<button
+				class="submit inline-block mt-14 w-fit lg:px-15 lg:py-7.5 lg:text-3xl font-bold text-2xl text-white bg-gray-800 hover:bg-gray-900 hover:ring-2 focus:ring-4 ring-gray-300 rounded-lg px-10 py-5 me-2 transition duration-200"
+			>
+				Submit
+			</button>
+		</article>
+		{{sections}}
+	</body>
+</html>

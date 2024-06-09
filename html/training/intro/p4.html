@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Training | StegaNerds</title>
+		<link rel="stylesheet" href="/style.css" />
+	</head>
+	<body
+		class="py-5 text-gray-800 text-xl"
+		style="padding-left: 15vw; padding-right: 15vw"
+	>
+		{{nav}}
+		<article class="flex justify-center" style="margin-top: 20vh">
+			<section
+				class="2xl:max-w-3xl text-2xl flex flex-col gap-7"
+				style="line-height: 1.5"
+			>
+				<h1 class="text-center text-4xl md:text-6xl font-extrabold text-black">
+					You scored a <span class="score"></span>/3!
+				</h1>
+				<p class="feedback"></p>
+			</section>
+		</article>
+		<div class="flex justify-center">
+			<a
+				href="../mental"
+				class="end inline-block mt-14 w-fit lg:px-15 lg:py-7.5 lg:text-3xl font-bold text-2xl text-white bg-gray-800 hover:bg-gray-900 hover:ring-2 focus:ring-4 ring-gray-300 rounded-lg px-10 py-5 me-2 transition duration-200"
+			>
+				Next Unit
+			</a>
+		</div>
+		{{sections}}
+		<script>
+			const score = new URL(location.href).searchParams.get('score');
+			document.querySelector('.score').textContent = score || '?';
+			if (score === '0') {
+				document.querySelector('.feedback').innerHTML =
+					'Uh-oh, it looks like you got all the questions wrong! Practice more by going back to <a href="./1" class="underline">the lesson</a> and then retake the test for a better result!';
+				document.querySelector('.end').classList.add('disabled');
+				document.querySelector('.end').removeAttribute('href');
+			} else if (score === '1') {
+				document.querySelector('.feedback').innerHTML =
+					'You got a decent score, but you can definitely do better! Practice more by going back to <a href="./1" class="underline">the lesson</a> and then come back and try again!';
+				document.querySelector('.end').classList.add('disabled');
+				document.querySelector('.end').removeAttribute('href');
+			} else if (score === '2') {
+				document.querySelector('.feedback').innerHTML =
+					'Nice work! You\'ve shown a great understanding of unsafe NSFW websites! If you want, you can practice more by going back to <a href="./1" class="underline">the lesson</a> or <a href="./2" class="underline">retake the test</a> for a better score! Otherwise, feel free to continue on with the course.';
+			} else if (score === '3') {
+				document.querySelector('.feedback').innerHTML =
+					'Extraordinary work! Keep on going with the rest of the course!';
+			}
+		</script>
+	</body>
+</html>

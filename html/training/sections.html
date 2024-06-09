@@ -1,0 +1,76 @@
+<button
+	class="open bg-white fixed left-0 top-0 h-screen flex justify-center border-r-2 p-2 font-medium"
+	style="text-orientation: upright; writing-mode: vertical-lr"
+>
+	SECTIONS
+</button>
+<aside
+	class="panel bg-white fixed left-0 top-0 h-screen shadow-2xl rounded-l-2xl p-7 2xl:text-2xl duration-300 flex flex-col gap-8"
+	style="
+		width: 24rem;
+		transition-property: left, opacity;
+		left: -24rem;
+		opacity: 0;
+	"
+>
+	<div>
+		<a href="/training/intro" class="text-gray-700 hover:text-black"
+			>Unit 1: What is a scam?</a
+		>
+		<div class="ml-5 flex flex-col gap-3 mt-3">
+			<a href="/training/intro/1" class="text-gray-700 hover:text-black"
+				>General information</a
+			>
+			<a href="/training/intro/2" class="text-gray-700 hover:text-black"
+				>Quiz</a
+			>
+		</div>
+	</div>
+	<div>
+		<a href="/training/mental" class="text-gray-700 hover:text-black"
+			>Unit 2: Mental scams</a
+		>
+		<div class="ml-5 flex flex-col gap-3 mt-3">
+			<a href="/training/mental/1" class="text-gray-700 hover:text-black"
+				>General information</a
+			>
+			<a href="/training/mental/2" class="text-gray-700 hover:text-black"
+				>Catch scammers</a
+			>
+		</div>
+	</div>
+	<div>
+		<a href="/training/mental" class="text-gray-700 hover:text-black"
+			>Unit 4: NSFW websites</a
+		>
+		<div class="ml-5 flex flex-col gap-3 mt-3">
+			<a href="/training/mental/1" class="text-gray-700 hover:text-black"
+				>General information</a
+			>
+			<a href="/training/mental/2" class="text-gray-700 hover:text-black"
+				>Identify unsafe websites</a
+			>
+		</div>
+	</div>
+</aside>
+<script>
+	const panel = document.querySelector('.panel');
+	addEventListener('click', function (e) {
+		if (
+			[
+				...(function* (e) {
+					do {
+						yield e;
+					} while ((e = e.parentNode));
+				})(e.target)
+			].includes(panel) ||
+			e.target === document.querySelector('.open')
+		) {
+			panel.style.left = '0';
+			panel.style.opacity = '1';
+		} else {
+			panel.style.left = '-24rem';
+			panel.style.opacity = '0';
+		}
+	});
+</script>
