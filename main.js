@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { URL } = require('url');
-const { PDFDocument } = require('pdf-lib');
+const puppeteer = require('puppeteer');
 
 const app = express();
 const templates = ['nav', '/training/sections'].map((e) => [
@@ -44,43 +44,36 @@ app.get('/stegatificate/create', (req, res) => {
 app.get('/stegatificate', async (req, res) => {
 	const url = new URL(path.join('https://steganerds.fr', req.url));
 	if (!url.searchParams.get('name')) res.status(400).send('400 Bad Request');
-	res.setHeader('Content-Type', 'application/pdf');
-	const pdfDoc = await PDFDocument.load(fs.readFileSync('stegatificate.pdf'));
-	const page = pdfDoc.getPage(0);
-	const { _, height } = page.getSize();
-	const textContent = await page.getTextContent();
 
-	const textItems = textContent.items.map((item) => ({
-		str: item.str,
-		x: item.transform[4],
-		y: item.transform[5],
-		size: item.transform[3]
-	}));
-
-	textItems.forEach((item) => {
-		if (item.str.includes('Insert Name Here')) {
-			const replacedText = item.str.replace(
-				'Insert Name Here',
-				url.searchParams.get('name')
-			);
-			page.drawText(replacedText, {
-				x: item.x,
-				y: height - item.y,
-				size: item.size
-			});
-		}
+	const browser = await puppeteer.launch({
+		args: ['--no-sandbox'],
+		headless: true
 	});
-	const modifiedPdfBytes = await pdfDoc.save();
-	res.send(Buffer.from(modifiedPdfBytes));
-	// res.send(
-	// 	Buffer.from(
-	// 		fs
-	// 			.readFileSync(path.join(__dirname, '/stegatificate.pdf'))
-	// 			.toString('utf-8')
-	// 			.replaceAll('Insert Name Here', url.searchParams.get('name')),
-	// 		'utf-8'
-	// 	)
-	// );
+	const page = await browser.newPage();
+	await page.goto(
+		'data:text/html;charset=UTF-8,' +
+			encodeURIComponent(
+				fs
+					.readFileSync(path.join(__dirname, 'stegatificate.html'), 'utf-8')
+					.replaceAll('INSERTTEXTHERE', url.searchParams.get('name'))
+			),
+		{
+			waitUntil: 'networkidle0'
+		}
+	);
+	await page.pdf({
+		path: 'stegatificate.pdf',
+		format: 'letter',
+		landscape: true,
+		scale: 0.75
+	});
+	await browser.close();
+
+	const file = fs.createReadStream(path.join(__dirname, 'stegatificate.pdf'));
+	const stat = fs.statSync(path.join(__dirname, 'stegatificate.pdf'));
+	res.setHeader('Content-Length', stat.size);
+	res.setHeader('Content-Type', 'application/pdf');
+	file.pipe(res);
 });
 app.get('/training/**/', (req, res) => {
 	const url = new URL(path.join('https://steganerds.fr', req.url));
